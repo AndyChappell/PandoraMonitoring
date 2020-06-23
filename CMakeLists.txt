@@ -27,7 +27,7 @@ include_directories(${PandoraSDK_INCLUDE_DIRS})
 link_libraries(${PandoraSDK_LIBRARIES})
 add_definitions(${PandoraSDK_DEFINITIONS})
 
-find_package(ROOT 5.26.00 REQUIRED COMPONENTS Eve Geom RGL EG)
+find_package(ROOT 6.18.04 REQUIRED COMPONENTS Eve Geom RGL EG)
 include_directories(SYSTEM ${ROOT_INCLUDE_DIRS})
 link_libraries(${ROOT_LIBRARIES} ${ROOT_COMPONENT_LIBRARIES})
 add_definitions(${ROOT_DEFINITIONS})
@@ -77,8 +77,4 @@ PANDORA_GENERATE_PACKAGE_CONFIGURATION_FILES(${PROJECT_NAME}Config.cmake ${PROJE
 # display some variables and write them to cache
 PANDORA_DISPLAY_STD_VARIABLES()
 
-get_cmake_property(_variableNames VARIABLES)
-list (SORT _variableNames)
-foreach (_variableName ${_variableNames})
-    message(STATUS "${_variableName}=${${_variableName}}")
-endforeach()
+message(STATUS "CMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}")
