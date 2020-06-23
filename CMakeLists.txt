@@ -76,3 +76,9 @@ PANDORA_GENERATE_PACKAGE_CONFIGURATION_FILES(${PROJECT_NAME}Config.cmake ${PROJE
 #-------------------------------------------------------------------------------------------------------------------------------------------
 # display some variables and write them to cache
 PANDORA_DISPLAY_STD_VARIABLES()
+
+get_cmake_property(_variableNames VARIABLES)
+list (SORT _variableNames)
+foreach (_variableName ${_variableNames})
+    message(STATUS "${_variableName}=${${_variableName}}"
+endforeach()
