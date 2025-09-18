@@ -12,7 +12,7 @@ project(PandoraMonitoring)
 # project version
 set(${PROJECT_NAME}_VERSION_MAJOR 04)
 set(${PROJECT_NAME}_VERSION_MINOR 00)
-set(${PROJECT_NAME}_VERSION_PATCH 00)
+set(${PROJECT_NAME}_VERSION_PATCH 02)
 set(${PROJECT_NAME}_VERSION "${${PROJECT_NAME}_VERSION_MAJOR}.${${PROJECT_NAME}_VERSION_MINOR}.${${PROJECT_NAME}_VERSION_PATCH}")
 
 #-------------------------------------------------------------------------------------------------------------------------------------------
@@ -35,7 +35,9 @@ add_definitions("-DMONITORING")
 
 # Set up C++ Standard
 # ``-DCMAKE_CXX_STANDARD=<standard>`` when invoking CMake
-set(CMAKE_CXX_STANDARD 17 CACHE STRING "")
+if(NOT DEFINED CMAKE_CXX_STANDARD)
+    set(CMAKE_CXX_STANDARD 17)
+endif()
 
 # Prevent CMake falls back to the latest standard the compiler does support
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
