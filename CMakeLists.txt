@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
-# Enforce out-of-source builds, which is a good practice. 
+# Enforce out-of-source builds.
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
     message(FATAL_ERROR "PandoraMonitoring requires an out-of-source build.")
 endif()
@@ -54,6 +54,10 @@ target_compile_options(${PROJECT_NAME} PRIVATE
     -Wshadow
     -fno-strict-aliasing
 )
+
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    target_compile_options(${PROJECT_NAME} PRIVATE -Wno-dtor-name)
+endif()
 
 # Optional documentation. 
 option(PandoraMonitoring_BUILD_DOCS "Build documentation for ${PROJECT_NAME}" OFF)
