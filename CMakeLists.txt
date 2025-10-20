@@ -12,7 +12,9 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/install" CACHE PATH "Default install path for PandoraMonitoring" FORCE)
 endif()
 
-find_package(PandoraSDK 4.0.2 REQUIRED)
+if (NOT TARGET PandoraPFA::PandoraSDK)
+    find_package(PandoraSDK 4.0.2 REQUIRED)
+endif()
 find_package(ROOT 6.18.04 REQUIRED COMPONENTS Eve Geom RGL EG)
 
 # Build products
