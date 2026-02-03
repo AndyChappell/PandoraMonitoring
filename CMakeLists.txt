@@ -69,20 +69,20 @@ endif()
 
 # Installation
 
+# Include standard CMake modules for generating package configuration files.
+include(CMakePackageConfigHelpers)
+include(GNUInstallDirs)
+
 # Install the library target and export it for use by other CMake projects.
 install(TARGETS ${PROJECT_NAME}
     EXPORT PandoraMonitoringTargets
-    LIBRARY DESTINATION lib COMPONENT Runtime
-    ARCHIVE DESTINATION lib COMPONENT Development
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Runtime
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Development
     RUNTIME DESTINATION bin COMPONENT Runtime
 )
 
 # Install header files. 
 install(DIRECTORY include/ DESTINATION include COMPONENT Development)
-
-# Include standard CMake modules for generating package configuration files.
-include(CMakePackageConfigHelpers)
-include(GNUInstallDirs)
 
 # Configure the main package file.
 configure_package_config_file(
